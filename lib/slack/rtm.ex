@@ -18,7 +18,8 @@ defmodule Slack.Rtm do
   end
 
   defp handle_response({:ok, %HTTPoison.Response{body: body}}) do
-    case Poison.Parser.parse(body, keys: :atoms) do
+    module = Process.get(:json_library_module)
+    case module.decode(body, keys: :atoms) do
       {:ok, %{ok: true} = json} ->
         {:ok, json}
 

@@ -35,6 +35,7 @@ defmodule Slack.Bot do
       )
 
     rtm_module = Application.get_env(:slack, :rtm_module, Slack.Rtm)
+    Process.put(:json_library_module, Application.get_env(:slack, :json_library, Jason))
 
     case rtm_module.connect(token) do
       {:ok, rtm} ->

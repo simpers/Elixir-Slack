@@ -15,6 +15,8 @@ new [bot integration].
 
 Add Slack to your `mix.exs` `dependencies` function.
 
+If you do not already have a JSON library, pick `:poison` or `:jason` by adding either to your `mix.exs`
+
 [websocket_client]: https://github.com/jeremyong/websocket_client
 
 ```elixir
@@ -23,8 +25,27 @@ def application do
 end
 
 def deps do
-  [{:slack, "~> 0.14.0"}]
+  [
+    {:slack, "~> 0.14.0"},
+    ## Poison or Jason
+    {:poison, "~> 3.0"},
+    {:jason, "~> 1.1"}
+  ]
 end
+```
+
+Then make sure to add this to your appropriate configuration file `config/<env>.exs`:
+
+For Poison:
+```elixir
+config :slack,
+  json_library: Poison
+```
+
+For Jason:
+```elixir
+config :slack,
+  json_library: Jason
 ```
 
 ## RTM (Bot) Usage
