@@ -26,7 +26,7 @@ defmodule Slack.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 1.2"},
-      {:websocket_client, "~> 1.2.4"},
+      {:websocket_client, "~> 1.3"},
       {:poison, "~> 3.0"},
       {:ex_doc, "~> 0.19", only: :dev},
       {:credo, "~> 0.5", only: [:dev, :test]},
